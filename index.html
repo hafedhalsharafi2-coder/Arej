@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>أريج | منصة تسويقية للعطور السعودية</title>
+  <title>أريج | عطور سعودية فاخرة</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -26,13 +26,14 @@
       --line: #ead8c8;
       --muted: #6d5847;
       --white: #ffffff;
+      --shadow: 0 16px 42px rgba(80,45,24,.10);
     }
 
     header {
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(255, 250, 245, 0.95);
+      background: rgba(255, 250, 245, 0.96);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--line);
     }
@@ -43,24 +44,11 @@
       gap: 20px;
       padding: 16px 0;
     }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 28px;
+    .brand {
+      font-size: 30px;
       font-weight: 900;
       color: var(--brown);
-    }
-    .logo-mark {
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #d8a66f, #7a3f22);
-      color: #fff;
-      font-size: 18px;
-      box-shadow: 0 10px 22px rgba(122, 63, 34, .18);
+      letter-spacing: .5px;
     }
     .nav-links {
       display: flex;
@@ -69,6 +57,7 @@
       gap: 18px;
       font-size: 14px;
       color: #3e3025;
+      font-weight: 700;
     }
     .nav-links a:hover { color: var(--brown); }
     .btn {
@@ -227,6 +216,22 @@
     .price { color: var(--brown); font-weight: 900; font-size: 20px; }
     .rating { color: #a36a38; font-size: 14px; }
 
+    .occasion-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .occasion {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 12px 30px rgba(80,45,24,.07);
+    }
+    .occasion .icon { font-size: 30px; margin-bottom: 10px; }
+    .occasion h3 { color: var(--brown); margin-bottom: 6px; }
+    .occasion p { color: var(--muted); }
+
     .videos-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -238,7 +243,7 @@
       border: 1px solid var(--line);
       border-radius: 30px;
       overflow: hidden;
-      box-shadow: 0 16px 42px rgba(80,45,24,.10);
+      box-shadow: var(--shadow);
     }
     .video-frame {
       width: 100%;
@@ -331,16 +336,21 @@
       margin-bottom: 4px;
     }
     .metric span { color: var(--muted); }
-    .analysis-note {
+    .insights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .insight {
       background: #fff;
       border: 1px solid var(--line);
-      border-radius: 24px;
-      padding: 24px;
-      margin-top: 20px;
+      border-radius: 22px;
+      padding: 18px;
       color: var(--muted);
       box-shadow: 0 12px 30px rgba(80,45,24,.06);
     }
-    .analysis-note strong { color: var(--brown); }
+    .insight strong { color: var(--brown); display: block; margin-bottom: 4px; }
 
     .shop-cta {
       background:
@@ -394,9 +404,11 @@
       .hero-grid,
       .videos-grid,
       .cards,
+      .occasion-grid,
       .social-wall,
       .analytics-grid,
       .content-points,
+      .insights,
       .shop-cta {
         grid-template-columns: 1fr;
       }
@@ -414,12 +426,10 @@
   <header>
     <div class="container">
       <nav>
-        <a class="logo" href="#top" aria-label="أريج">
-          <span class="logo-mark">أ</span>
-          <span>أريج</span>
-        </a>
+        <a class="brand" href="#top" aria-label="أريج">أريج</a>
         <div class="nav-links">
           <a href="#products">المنتجات</a>
+          <a href="#occasion">اختاري عطرك</a>
           <a href="#videos">الفيديوهات</a>
           <a href="#social">التواصل</a>
           <a href="#analytics">الأداء</a>
@@ -434,19 +444,19 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="badge">منصة تسويقية رقمية للعطور</span>
+          <span class="badge">عطور سعودية فاخرة</span>
           <h1>أريجك الخاص يبدأ من عطر يعبّر عنك</h1>
           <p>
-            اكتشفي مجموعة أريج من العطور السعودية الفاخرة، بتجربة رقمية تجمع بين سهولة التسوق، المحتوى البصري، والتواصل المباشر مع مجتمع العطر.
+            اكتشفي عطرًا يرافق يومك، يليق بمناسبتك، ويترك انطباعًا لا يُنسى؛ من فخامة العود إلى نعومة الورد ونقاء المسك.
           </p>
           <div class="hero-actions">
             <a class="btn" href="#products">اكتشفي المجموعة</a>
-            <a class="btn secondary" href="#videos">شاهدي الدليل العطري</a>
+            <a class="btn secondary" href="#occasion">اختاري حسب المناسبة</a>
           </div>
           <div class="hero-stats">
-            <div class="mini-stat"><strong>+12K</strong><span>زيارة شهرية للمنصة</span></div>
-            <div class="mini-stat"><strong>4.8/5</strong><span>تقييم تجربة التسوق</span></div>
             <div class="mini-stat"><strong>15%</strong><span>خصم لأول طلب</span></div>
+            <div class="mini-stat"><strong>4.8/5</strong><span>تقييم تجربة التسوق</span></div>
+            <div class="mini-stat"><strong>+12K</strong><span>زائرة هذا الشهر</span></div>
           </div>
         </div>
 
@@ -464,7 +474,7 @@
       <div class="container">
         <div class="section-title">
           <h2>منتجات مختارة من أريج</h2>
-          <p>مجموعة مصممة لتناسب شخصيات مختلفة: الفخامة، النعومة، والانتعاش اليومي.</p>
+          <p>ثلاث روائح، ثلاث شخصيات، وتجربة عطرية تناسب لحظاتك المختلفة.</p>
         </div>
 
         <div class="cards">
@@ -504,37 +514,63 @@
       </div>
     </section>
 
+    <section id="occasion">
+      <div class="container">
+        <div class="section-title">
+          <h2>اختاري عطرك حسب المناسبة</h2>
+          <p>كل مناسبة لها رائحة تكمّل حضورك وتعبّر عن ذوقك.</p>
+        </div>
+        <div class="occasion-grid">
+          <article class="occasion">
+            <div class="icon">🌙</div>
+            <h3>سهرة أو مناسبة رسمية</h3>
+            <p>اختاري عود ملكي لرائحة عميقة، فاخرة، وثابتة تترك أثرًا واضحًا.</p>
+          </article>
+          <article class="occasion">
+            <div class="icon">🌸</div>
+            <h3>زيارة عائلية أو لقاء صباحي</h3>
+            <p>ورد الطائف يمنحك حضورًا ناعمًا وراقيًا دون مبالغة.</p>
+          </article>
+          <article class="occasion">
+            <div class="icon">☁️</div>
+            <h3>دوام، جامعة، أو يوم طويل</h3>
+            <p>مسك أبيض خيار نظيف ومنعش يمنحك شعورًا بالانتعاش طوال اليوم.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="videos">
       <div class="container">
         <div class="section-title">
-          <h2>اختاري عطرك بأسلوب أريج</h2>
-          <p>محتوى تسويقي مرئي يعرّف الزائرة بالمنتجات، يقرّبها من هوية العلامة، ويشجعها على التفاعل والشراء.</p>
+          <h2>دليلك العطري من أريج</h2>
+          <p>فيديوهات قصيرة تساعدك على اختيار العطر المناسب واستخدامه بطريقة تزيد من ثباته.</p>
         </div>
 
         <div class="videos-grid">
           <article class="video-card">
             <iframe class="video-frame" src="https://www.youtube.com/embed/dfAWWh1IilE" title="إعلان عطري فاخر" allowfullscreen></iframe>
             <div class="video-body">
-              <span class="badge">إلهام عطري</span>
-              <h3>فخامة العطر تبدأ من أول نظرة</h3>
-              <p>لقطات بصرية فاخرة تعكس جمال العبوة وتفاصيل الرائحة، وتناسب حملة إطلاق عطر عود ملكي من أريج.</p>
+              <span class="badge">اختيار العطر</span>
+              <h3>كيف تختارين عطرك حسب المناسبة؟</h3>
+              <p>اختاري عود ملكي للسهرات، ورد الطائف للقاءات الهادئة، ومسك أبيض ليومك العملي.</p>
             </div>
           </article>
 
           <article class="video-card">
-            <iframe class="video-frame" src="https://www.youtube.com/embed/KqegRgjDVso" title="إعلان متجر عطور فاخر" allowfullscreen></iframe>
+            <iframe class="video-frame" src="https://www.youtube.com/embed/KqegRgjDVso" title="روتين عطري فاخر" allowfullscreen></iframe>
             <div class="video-body">
-              <span class="badge">تجربة تسوق</span>
-              <h3>من التصفح إلى اختيار العطر المناسب</h3>
-              <p>فيديو قصير يبرز تجربة التسوق الفاخرة، ويشجع الزائرة على استكشاف المجموعة واختيار العطر الأقرب لشخصيتها.</p>
+              <span class="badge">روتين عطري</span>
+              <h3>روتين عطري يدوم طوال اليوم</h3>
+              <p>رشي العطر على نقاط النبض، اتركيه يجف بهدوء، وجددي الرائحة عند الحاجة بلمسة خفيفة.</p>
             </div>
           </article>
         </div>
 
         <div class="content-points">
-          <div class="content-point"><strong>محتوى تعريفي</strong>يعرض شخصية كل عطر ومناسبته بطريقة بسيطة ومقنعة.</div>
-          <div class="content-point"><strong>محتوى تفاعلي</strong>يدعو الزائرات للتصويت بين العود والورد ومشاركة تجربتهن.</div>
-          <div class="content-point"><strong>محتوى تحويلي</strong>يربط المشاهدة مباشرة بزر التسوق والعروض الحالية.</div>
+          <div class="content-point"><strong>عود ملكي</strong>للإطلالة الفاخرة والحضور القوي في المناسبات.</div>
+          <div class="content-point"><strong>ورد الطائف</strong>لرائحة وردية ناعمة تناسب اللقاءات اليومية.</div>
+          <div class="content-point"><strong>مسك أبيض</strong>لانتعاش نظيف يدوم معك في الدوام والجامعة.</div>
         </div>
       </div>
     </section>
@@ -543,33 +579,33 @@
       <div class="container">
         <div class="section-title">
           <h2>مجتمع أريج على وسائل التواصل</h2>
-          <p>منصاتنا الاجتماعية ليست روابط فقط؛ بل مساحة للتجارب، التصويت، العروض، وصناعة محتوى تشارك فيه العميلات.</p>
+          <p>شاركي رائحتك المفضلة، تابعي العروض، وصوّتي للعطر الأقرب لذوقك.</p>
         </div>
 
         <div class="social-wall">
           <article class="post">
             <img class="post-img" src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&w=900&q=80" alt="منشور إنستغرام لأريج" />
             <div class="platform"><span>Instagram</span><span>#أريج_اختياري</span></div>
-            <p>شاركي صورة عطرك المفضل من أريج، وادخلي السحب الأسبوعي على باقة العطور الفاخرة.</p>
+            <p>صوّري عطرك من أريج، واكتبي: ما الرائحة التي تشبه شخصيتك؟</p>
           </article>
 
           <article class="post">
             <img class="post-img" src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=80" alt="منشور تيك توك لأريج" />
             <div class="platform"><span>TikTok</span><span>روتين عطري</span></div>
-            <p>شاهدي روتين عطري سريع: أين تضعين العطر؟ وكيف تجعلين الرائحة تدوم مدة أطول؟</p>
+            <p>جربي تحدي الرائحة اليومية: عطر واحد، ثلاث مناسبات، وثلاث طرق للتنسيق.</p>
           </article>
 
           <article class="post">
             <img class="post-img" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80" alt="منشور X لأريج" />
             <div class="platform"><span>X</span><span>صوتي الآن</span></div>
-            <p>تصويت اليوم: هل تختارين عطرًا شرقيًا فاخرًا أم عطرًا ورديًا ناعمًا؟</p>
+            <p>تصويت اليوم: هل تختارين فخامة العود أم نعومة الورد؟</p>
           </article>
         </div>
 
         <div class="social-actions">
-          <a class="btn small" href="https://www.instagram.com" target="_blank">تابعينا على Instagram</a>
-          <a class="btn small secondary" href="https://www.tiktok.com" target="_blank">شاهدينا على TikTok</a>
-          <a class="btn small secondary" href="https://www.x.com" target="_blank">شاركينا رأيك على X</a>
+          <a class="btn small" href="https://www.instagram.com" target="_blank">Instagram</a>
+          <a class="btn small secondary" href="https://www.tiktok.com" target="_blank">TikTok</a>
+          <a class="btn small secondary" href="https://www.x.com" target="_blank">X</a>
         </div>
       </div>
     </section>
@@ -577,20 +613,21 @@
     <section id="analytics">
       <div class="container">
         <div class="section-title">
-          <h2>مؤشرات أداء المنصة</h2>
-          <p>نستخدم مؤشرات الزيارة والتفاعل لفهم تفضيلات الزائرات وتطوير تجربة التسوق والمحتوى باستمرار.</p>
+          <h2>نبض أريج هذا الأسبوع</h2>
+          <p>الأرقام تكشف العطر الأكثر جذبًا، والمنشور الأعلى تفاعلًا، والعرض الأقرب للشراء.</p>
         </div>
 
         <div class="analytics-grid">
           <div class="metric"><strong>12K</strong><span>زائرة شهرية</span></div>
-          <div class="metric"><strong>4.2%</strong><span>نسبة النقر على المنتجات</span></div>
-          <div class="metric"><strong>2:35</strong><span>متوسط وقت التصفح</span></div>
-          <div class="metric"><strong>8.7%</strong><span>معدل التحويل للشراء</span></div>
+          <div class="metric"><strong>4.2%</strong><span>نقر على العروض</span></div>
+          <div class="metric"><strong>2:35</strong><span>متوسط التصفح</span></div>
+          <div class="metric"><strong>8.7%</strong><span>طلبات مكتملة</span></div>
         </div>
 
-        <div class="analysis-note">
-          <strong>كيف نستفيد من هذه المؤشرات؟</strong>
-          تساعدنا البيانات على تحسين ترتيب المنتجات، تطوير العروض، معرفة المحتوى الأكثر جذبًا، وتوجيه الحملات الإعلانية نحو المنصات التي تحقق أعلى تفاعل.
+        <div class="insights">
+          <div class="insight"><strong>الأكثر مشاهدة</strong>عود ملكي يتصدر الزيارات هذا الأسبوع.</div>
+          <div class="insight"><strong>الأكثر تفاعلًا</strong>تصويت العود والورد جذب أعلى مشاركة.</div>
+          <div class="insight"><strong>عرض مقترح</strong>خصم 15% على ورد الطائف قبل نهاية الأسبوع.</div>
         </div>
       </div>
     </section>
@@ -611,15 +648,14 @@
 
         <div class="project-note">
           <strong>بيانات المشروع:</strong> بكالوريوس الاتصال التسويقي | MRKC 324 التسويق الرقمي | الشعبة MR2 | أ.د/ دعاء فتحي سالم<br />
-          <strong>أعضاء المجموعة:</strong> لجين الشمراني 2407635، لمى عابد 2411927، ديانة هشام مطر 2312851، نوال جيزاوي 2407940<br />
+          <strong>أعضاء المجموعة:</strong> لجين الشمراني 2407635، لمى عابد 2411927، ديانة هشام مطر 2312851، نوال جيزاوي 2407940
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      منصة أريج التسويقية | </div>
+    <div class="container">منصة أريج التسويقية</div>
   </footer>
 </body>
 </html>
