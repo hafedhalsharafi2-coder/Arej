@@ -1,106 +1,628 @@
-<!DOCTYPE html><html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>أريج | منصة تسويقية للعطور السعودية</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: "Tahoma", "Arial", sans-serif;
       background: #fffaf5;
       color: #2b2118;
       line-height: 1.8;
     }
-    a { text-decoration: none; color: inherit; }
-    .container { width: min(1120px, 92%); margin: auto; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    .container { width: min(1140px, 92%); margin: auto; }
+
+    :root {
+      --brown: #7a3f22;
+      --dark: #2b2118;
+      --gold: #c08a54;
+      --cream: #fffaf5;
+      --soft: #f4e4d3;
+      --line: #ead8c8;
+      --muted: #6d5847;
+      --white: #ffffff;
+    }
+
     header {
-      position: sticky; top: 0; z-index: 20;
-      background: rgba(255, 250, 245, 0.94);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid #ead8c8;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 250, 245, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
     }
     nav {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 18px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 0;
     }
-    .logo { font-size: 28px; font-weight: 800; color: #8a4f2b; }
-    .nav-links { display: flex; gap: 22px; font-size: 15px; }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--brown);
+    }
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #d8a66f, #7a3f22);
+      color: #fff;
+      font-size: 18px;
+      box-shadow: 0 10px 22px rgba(122, 63, 34, .18);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      font-size: 14px;
+      color: #3e3025;
+    }
+    .nav-links a:hover { color: var(--brown); }
     .btn {
-      display: inline-block; padding: 12px 22px; border-radius: 999px;
-      background: #8a4f2b; color: white; font-weight: 700;
-      box-shadow: 0 10px 24px rgba(138, 79, 43, .20);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      background: var(--brown);
+      color: white;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 12px 26px rgba(122, 63, 34, .22);
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
     }
-    .btn.secondary { background: #f1dfcf; color: #6b3c20; box-shadow: none; }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 16px 30px rgba(122, 63, 34, .28); }
+    .btn.secondary { background: #f1dfcf; color: #63341c; box-shadow: none; }
+    .btn.light { background: #ffffff; color: var(--brown); box-shadow: none; }
+    .btn.small { padding: 9px 16px; font-size: 14px; }
+
     .hero {
-      min-height: 78vh; display: grid; align-items: center;
+      min-height: 86vh;
+      display: grid;
+      align-items: center;
+      overflow: hidden;
       background:
-        radial-gradient(circle at 20% 10%, rgba(207, 156, 95, .25), transparent 28%),
-        linear-gradient(135deg, #fffaf5 0%, #f6e7d8 100%);
+        radial-gradient(circle at 12% 18%, rgba(192, 138, 84, .26), transparent 30%),
+        radial-gradient(circle at 85% 8%, rgba(122, 63, 34, .12), transparent 28%),
+        linear-gradient(135deg, #fffaf5 0%, #f6e6d4 100%);
     }
     .hero-grid {
-      display: grid; grid-template-columns: 1.1fr .9fr; gap: 42px; align-items: center;
-      padding: 72px 0;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 46px;
+      align-items: center;
+      padding: 74px 0 84px;
     }
     .badge {
-      display: inline-flex; padding: 8px 16px; border-radius: 999px;
-      background: #fff; border: 1px solid #ead8c8; color: #8a4f2b;
-      margin-bottom: 18px; font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--line);
+      color: var(--brown);
+      margin-bottom: 18px;
+      font-weight: 800;
+      font-size: 14px;
     }
-    h1 { font-size: clamp(36px, 5vw, 64px); line-height: 1.2; margin-bottom: 18px; }
-    .hero p { font-size: 19px; color: #5e4a3b; margin-bottom: 28px; }
-    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
-    .hero-card {
-      background: #fff; border-radius: 32px; padding: 28px;
-      box-shadow: 0 24px 60px rgba(80, 45, 24, .14);
-      border: 1px solid #ead8c8;
+    h1 {
+      font-size: clamp(38px, 5vw, 68px);
+      line-height: 1.18;
+      color: #2d2118;
+      margin-bottom: 18px;
+      letter-spacing: -1px;
     }
-    .bottle {
-      height: 360px; border-radius: 28px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.45), rgba(255,255,255,0)),
-        linear-gradient(135deg, #c8955c, #5d2f1a);
-      display: grid; place-items: center; color: white; text-align: center;
-      font-size: 28px; font-weight: 800; letter-spacing: 1px;
+    .hero p {
+      font-size: 19px;
+      color: var(--muted);
+      margin-bottom: 28px;
+      max-width: 680px;
     }
-    section { padding: 76px 0; }
-    .section-title { text-align: center; margin-bottom: 38px; }
-    .section-title h2 { font-size: 36px; color: #3b2a1f; }
-    .section-title p { color: #6f5a49; max-width: 700px; margin: 10px auto 0; }
-    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 28px; }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 560px;
+    }
+    .mini-stat {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.72);
+    }
+    .mini-stat strong { display: block; color: var(--brown); font-size: 20px; }
+    .mini-stat span { color: var(--muted); font-size: 13px; }
+    .hero-media {
+      position: relative;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 36px;
+      padding: 18px;
+      box-shadow: 0 26px 70px rgba(80, 45, 24, .16);
+    }
+    .hero-image {
+      width: 100%;
+      height: 460px;
+      object-fit: cover;
+      border-radius: 28px;
+    }
+    .floating-card {
+      position: absolute;
+      right: -18px;
+      bottom: 34px;
+      width: 235px;
+      background: rgba(255,255,255,.94);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: 0 18px 42px rgba(80,45,24,.14);
+    }
+    .floating-card strong { color: var(--brown); display: block; margin-bottom: 4px; }
+    .floating-card span { color: var(--muted); font-size: 13px; }
+
+    section { padding: 80px 0; }
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .section-title h2 {
+      font-size: clamp(30px, 4vw, 42px);
+      color: #302319;
+      margin-bottom: 8px;
+    }
+    .section-title p {
+      color: var(--muted);
+      max-width: 760px;
+      margin: auto;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
     .card {
-      background: #fff; border: 1px solid #ead8c8; border-radius: 24px;
-      padding: 24px; box-shadow: 0 14px 34px rgba(80,45,24,.08);
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: 22px;
+      box-shadow: 0 14px 34px rgba(80,45,24,.08);
+      transition: transform .2s ease, box-shadow .2s ease;
     }
-    .card h3 { color: #8a4f2b; margin-bottom: 8px; font-size: 22px; }
-    .product-img {
-      height: 190px; border-radius: 20px; margin-bottom: 18px;
-      background: linear-gradient(135deg, #f0d2b7, #9b5d35);
-      display: grid; place-items: center; color: white; font-weight: 800;
+    .card:hover { transform: translateY(-4px); box-shadow: 0 18px 44px rgba(80,45,24,.12); }
+    .card h3 { color: var(--brown); font-size: 22px; margin-bottom: 8px; }
+    .card p { color: var(--muted); }
+    .product-photo {
+      width: 100%;
+      height: 225px;
+      object-fit: cover;
+      border-radius: 22px;
+      margin-bottom: 18px;
+      border: 1px solid #f1dfcf;
     }
-    .price { margin: 12px 0 18px; color: #8a4f2b; font-weight: 800; }
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin: 16px 0 18px;
+    }
+    .price { color: var(--brown); font-weight: 900; font-size: 20px; }
+    .rating { color: #a36a38; font-size: 14px; }
+
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 26px;
+    }
+    .video-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 16px 42px rgba(80,45,24,.10);
+    }
+    .video-frame {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 0;
+      display: block;
+      background: #1f1813;
+    }
+    .video-body { padding: 22px; }
+    .video-body h3 { color: var(--brown); font-size: 22px; margin-bottom: 8px; }
+    .video-body p { color: var(--muted); }
+    .content-points {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 22px;
+    }
+    .content-point {
+      background: #fff6ed;
+      border: 1px solid #f1dfcf;
+      border-radius: 18px;
+      padding: 16px;
+      color: #5e4a3b;
+    }
+    .content-point strong { color: var(--brown); display: block; margin-bottom: 4px; }
+
+    .social-section {
+      background: linear-gradient(180deg, #fffaf5 0%, #f6e7d8 100%);
+    }
     .social-wall {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
     }
     .post {
-      background: #fff; border-radius: 22px; padding: 18px; border: 1px solid #ead8c8;
+      background: #fff;
+      border-radius: 26px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      box-shadow: 0 14px 34px rgba(80,45,24,.08);
     }
-    .post-img { height: 150px; border-radius: 18px; background: #d9ad82; margin-bottom: 12px; }
-    .analytics {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
-      margin-top: 24px;
+    .post-img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .platform {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      color: var(--brown);
+      font-weight: 900;
+    }
+    .platform span:last-child {
+      background: #fff6ed;
+      border: 1px solid #f1dfcf;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 12px;
+      color: #8a4f2b;
+    }
+    .social-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .analytics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
     }
     .metric {
-      background: #fff; border: 1px solid #ead8c8; border-radius: 22px;
-      padding: 22px; text-align: center;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px 18px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(80,45,24,.07);
     }
-    .metric strong { display: block; font-size: 32px; color: #8a4f2b; }
-    .cta {
-      background: #3b2a1f; color: #fff; border-radius: 34px; padding: 44px;
-      display: flex; justify-content: space-between; gap: 24px; align-items: center;
+    .metric strong {
+      display: block;
+      font-size: 34px;
+      color: var(--brown);
+      margin-bottom: 4px;
     }
-    .cta p { color: #ead8c8; margin-top: 8px; }
-    footer { padding: 34px 0; color: #7b6756; text-align: center; }
-    @media (max-width: 850px) {
+    .metric span { color: var(--muted); }
+    .analysis-note {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 24px;
+      margin-top: 20px;
+      color: var(--muted);
+      box-shadow: 0 12px 30px rgba(80,45,24,.06);
+    }
+    .analysis-note strong { color: var(--brown); }
+
+    .shop-cta {
+      background:
+        linear-gradient(rgba(43,33,24,.88), rgba(43,33,24,.88)),
+        url("https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=1400&q=80") center/cover;
+      color: #fff;
+      border-radius: 38px;
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      box-shadow: 0 24px 60px rgba(80,45,24,.18);
+    }
+    .shop-cta h2 { font-size: clamp(28px, 4vw, 42px); margin-bottom: 8px; }
+    .shop-cta p { color: #ead8c8; }
+    .newsletter {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .newsletter input {
+      min-width: 260px;
+      padding: 13px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.35);
+      outline: none;
+      background: rgba(255,255,255,.94);
+      color: #2b2118;
+    }
+
+    .project-note {
+      margin-top: 26px;
+      background: #fff6ed;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      color: #6f5a49;
+      font-size: 14px;
+    }
+    .project-note strong { color: var(--brown); }
+    footer {
+      padding: 34px 0;
+      color: #7b6756;
+      text-align: center;
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .videos-grid,
+      .cards,
+      .social-wall,
+      .analytics-grid,
+      .content-points,
+      .shop-cta {
+        grid-template-columns: 1fr;
+      }
+      .nav-links { display: none; }
+      .hero-image { height: 330px; }
+      .floating-card { position: static; width: auto; margin-top: 14px; }
+      .hero-stats { grid-template-columns: 1fr; }
+      .shop-cta { text-align: center; }
+      .newsletter { justify-content: center; }
+      .newsletter input { min-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="logo" href="#top" aria-label="أريج">
+          <span class="logo-mark">أ</span>
+          <span>أريج</span>
+        </a>
+        <div class="nav-links">
+          <a href="#products">المنتجات</a>
+          <a href="#videos">الفيديوهات</a>
+          <a href="#social">التواصل</a>
+          <a href="#analytics">الأداء</a>
+          <a href="#shop">العروض</a>
+        </div>
+        <a class="btn small" href="#products">تسوّقي الآن</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="badge">منصة تسويقية رقمية للعطور</span>
+          <h1>أريجك الخاص يبدأ من عطر يعبّر عنك</h1>
+          <p>
+            اكتشفي مجموعة أريج من العطور السعودية الفاخرة، بتجربة رقمية تجمع بين سهولة التسوق، المحتوى البصري، والتواصل المباشر مع مجتمع العطر.
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="#products">اكتشفي المجموعة</a>
+            <a class="btn secondary" href="#videos">شاهدي الدليل العطري</a>
+          </div>
+          <div class="hero-stats">
+            <div class="mini-stat"><strong>+12K</strong><span>زيارة شهرية للمنصة</span></div>
+            <div class="mini-stat"><strong>4.8/5</strong><span>تقييم تجربة التسوق</span></div>
+            <div class="mini-stat"><strong>15%</strong><span>خصم لأول طلب</span></div>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <img class="hero-image" src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1000&q=80" alt="عطر فاخر من أريج" />
+          <div class="floating-card">
+            <strong>إصدار هذا الشهر</strong>
+            <span>عود ملكي بلمسات العنبر والمسك الأبيض، مناسب للمناسبات الراقية.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="products">
+      <div class="container">
+        <div class="section-title">
+          <h2>منتجات مختارة من أريج</h2>
+          <p>ثلاثة عطور رئيسية تعكس هوية العلامة: فخامة شرقية، نعومة وردية، وانتعاش يومي.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <img class="product-photo" src="https://images.unsplash.com/photo-1619994403073-2cec844b8e63?auto=format&fit=crop&w=900&q=80" alt="عطر عود ملكي" />
+            <h3>عود ملكي</h3>
+            <p>رائحة فاخرة تجمع بين خشب العود والعنبر، مصممة للمناسبات الخاصة والإطلالات الراقية.</p>
+            <div class="product-meta">
+              <span class="price">245 ريال</span>
+              <span class="rating">★★★★★ الأكثر طلبًا</span>
+            </div>
+            <a class="btn" href="#shop">أضيفي للسلة</a>
+          </article>
+
+          <article class="card">
+            <img class="product-photo" src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=900&q=80" alt="عطر ورد الطائف" />
+            <h3>ورد الطائف</h3>
+            <p>عطر ناعم مستوحى من الورد السعودي، يمنحك حضورًا لطيفًا يناسب اليوم والعمل والزيارات.</p>
+            <div class="product-meta">
+              <span class="price">189 ريال</span>
+              <span class="rating">★★★★★ اختيار يومي</span>
+            </div>
+            <a class="btn" href="#shop">أضيفي للسلة</a>
+          </article>
+
+          <article class="card">
+            <img class="product-photo" src="https://images.unsplash.com/photo-1600612253971-422e7f7faeb6?auto=format&fit=crop&w=900&q=80" alt="عطر مسك أبيض" />
+            <h3>مسك أبيض</h3>
+            <p>مزيج نظيف ومنعش يدوم طوال اليوم، مناسب لمن تفضل العطور الهادئة والأنيقة.</p>
+            <div class="product-meta">
+              <span class="price">159 ريال</span>
+              <span class="rating">★★★★☆ رائحة ناعمة</span>
+            </div>
+            <a class="btn" href="#shop">أضيفي للسلة</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="videos">
+      <div class="container">
+        <div class="section-title">
+          <h2>دليل أريج العطري</h2>
+          <p>محتوى مرئي يساعد الزائرة على اختيار العطر المناسب، ويجعل تجربة المنصة أكثر تفاعلية وقربًا من العميلة.</p>
+        </div>
+
+        <div class="videos-grid">
+          <article class="video-card">
+            <iframe class="video-frame" src="https://www.youtube.com/embed/5qap5aO4i9A" title="فيديو أريج: كيف تختارين عطرك حسب المناسبة" allowfullscreen></iframe>
+            <div class="video-body">
+              <h3>كيف تختارين عطرك حسب المناسبة؟</h3>
+              <p>دليل سريع لاختيار العطر المناسب للدوام، الزيارات، والمناسبات الخاصة.</p>
+            </div>
+          </article>
+
+          <article class="video-card">
+            <iframe class="video-frame" src="https://www.youtube.com/embed/jfKfPfyJRdk" title="فيديو أريج: روتين عطري يومي" allowfullscreen></iframe>
+            <div class="video-body">
+              <h3>روتين عطري يدوم طوال اليوم</h3>
+              <p>نصائح بسيطة لاستخدام العطر بطريقة تجعل الرائحة تدوم وتبقى ناعمة ومتوازنة.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="content-points">
+          <div class="content-point"><strong>للدوام</strong>روائح خفيفة مثل المسك الأبيض تمنح حضورًا ناعمًا.</div>
+          <div class="content-point"><strong>للمناسبات</strong>العود والعنبر يضيفان فخامة وعمقًا للإطلالة.</div>
+          <div class="content-point"><strong>للهدايا</strong>اختاري الباقة الأكثر طلبًا مع تغليف فاخر من أريج.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="social" class="social-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>تواصلي معنا</h2>
+          <p>تابعي أحدث العروض، تجارب العميلات، والتصويتات اليومية عبر منصات أريج الاجتماعية.</p>
+        </div>
+
+        <div class="social-wall">
+          <article class="post">
+            <img class="post-img" src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&w=900&q=80" alt="منشور إنستغرام لأريج" />
+            <div class="platform"><span>Instagram</span><span>#أريج_اختياري</span></div>
+            <p>شاهدي تجارب العميلات وصور اختياراتهن اليومية من عطور أريج.</p>
+          </article>
+
+          <article class="post">
+            <img class="post-img" src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=80" alt="منشور تيك توك لأريج" />
+            <div class="platform"><span>TikTok</span><span>روتين عطري</span></div>
+            <p>مقاطع قصيرة لأفكار تنسيق العطر مع الإطلالة اليومية والمناسبات.</p>
+          </article>
+
+          <article class="post">
+            <img class="post-img" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80" alt="منشور X لأريج" />
+            <div class="platform"><span>X</span><span>عروض وتصويت</span></div>
+            <p>تابعي العروض السريعة والتصويتات وآراء العملاء حول المنتجات.</p>
+          </article>
+        </div>
+
+        <div class="social-actions">
+          <a class="btn small" href="https://www.instagram.com" target="_blank">تابعينا على Instagram</a>
+          <a class="btn small secondary" href="https://www.tiktok.com" target="_blank">شاهدينا على TikTok</a>
+          <a class="btn small secondary" href="https://www.x.com" target="_blank">شاركينا رأيك على X</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="analytics">
+      <div class="container">
+        <div class="section-title">
+          <h2>مؤشرات أداء المنصة</h2>
+          <p>نستخدم مؤشرات الزيارة والتفاعل لفهم تفضيلات الزائرات وتطوير تجربة التسوق والمحتوى باستمرار.</p>
+        </div>
+
+        <div class="analytics-grid">
+          <div class="metric"><strong>12K</strong><span>زائرة شهرية</span></div>
+          <div class="metric"><strong>4.2%</strong><span>نسبة النقر على المنتجات</span></div>
+          <div class="metric"><strong>2:35</strong><span>متوسط وقت التصفح</span></div>
+          <div class="metric"><strong>8.7%</strong><span>معدل التحويل للشراء</span></div>
+        </div>
+
+        <div class="analysis-note">
+          <strong>كيف نستفيد من هذه المؤشرات؟</strong>
+          تساعدنا البيانات على تحسين ترتيب المنتجات، تطوير العروض، معرفة المحتوى الأكثر جذبًا، وتوجيه الحملات الإعلانية نحو المنصات التي تحقق أعلى تفاعل.
+        </div>
+      </div>
+    </section>
+
+    <section id="shop">
+      <div class="container">
+        <div class="shop-cta">
+          <div>
+            <h2>ابدئي رحلتك مع أريج اليوم</h2>
+            <p>اشتركي في النشرة البريدية واحصلي على خصم 15% لأول طلب، مع توصيات عطرية تناسب ذوقك.</p>
+            <div class="newsletter">
+              <input type="email" placeholder="اكتبي بريدك الإلكتروني" aria-label="البريد الإلكتروني" />
+              <a class="btn light" href="#products">الحصول على الخصم</a>
+            </div>
+          </div>
+          <a class="btn light" href="#products">تسوّقي المجموعة</a>
+        </div>
+
+        <div class="project-note">
+          <strong>بيانات المشروع:</strong> بكالوريوس الاتصال التسويقي | MRKC 324 التسويق الرقمي | الشعبة MR2 | أ.د/ دعاء فتحي سالم<br />
+          <strong>أعضاء المجموعة:</strong> لجين الشمراني 2407635، لمى عابد 2411927، ديانة هشام مطر 2312851، نوال جيزاوي 2407940<br />
+          تم تصميم هذه المنصة كنموذج أكاديمي، وتمت الاستعانة بأداة ChatGPT في توليد فكرة المنصة وهيكل المحتوى، مع مراجعة وتعديل المحتوى النهائي من قبل المجموعة.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      منصة أريج التسويقية | نموذج أكاديمي لتطبيق التسويق الرقمي MRKC 324
+    </div>
+  </footer>
+</body>
+</html>
       .hero-grid, .cards, .social-wall, .analytics { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .cta { flex-direction: column; text-align: center; }
