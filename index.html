@@ -4,501 +4,1067 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>أريج | منصة تسويقية للعطور السعودية</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
   <style>
-    :root {
-      --bg: #fffaf6;
-      --soft: #f6eadc;
-      --soft-2: #efe0cf;
-      --card: #ffffff;
-      --text: #2f2118;
-      --muted: #735f4f;
-      --brown: #7a3f22;
-      --brown-dark: #4b2917;
-      --gold: #c79555;
-      --line: #ead8c8;
-      --shadow: 0 18px 48px rgba(74, 41, 23, .12);
-      --shadow-soft: 0 12px 30px rgba(74, 41, 23, .08);
-      --radius: 24px;
+    :root{
+      --bg: #f9f4ee;
+      --bg-soft: #fffaf6;
+      --white: #ffffff;
+      --text: #3d2b1f;
+      --muted: #7a6859;
+      --primary: #7b4b2a;
+      --primary-dark: #5c341a;
+      --accent: #c79a63;
+      --gold: #d9b47b;
+      --border: #eadfd3;
+      --shadow: 0 10px 30px rgba(86, 57, 35, 0.12);
+      --radius: 18px;
+      --radius-lg: 28px;
+      --transition: 0.3s ease;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: "Tajawal", Tahoma, Arial, sans-serif;
-      background: var(--bg);
+    *{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html{
+      scroll-behavior: smooth;
+    }
+
+    body{
+      font-family: "Tajawal", sans-serif;
+      background: linear-gradient(180deg, #fffaf6 0%, #f8f2eb 100%);
       color: var(--text);
-      line-height: 1.8;
+      line-height: 1.9;
     }
-    a { color: inherit; text-decoration: none; }
-    img, video { max-width: 100%; display: block; }
-    .container { width: min(1160px, 92%); margin: auto; }
 
-    .btn {
+    a{
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img{
+      max-width: 100%;
+      display: block;
+    }
+
+    .container{
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    .btn{
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 12px 22px;
+      padding: 14px 24px;
       border-radius: 999px;
-      border: 0;
-      font-weight: 800;
+      border: none;
       cursor: pointer;
-      transition: .25s ease;
-      white-space: nowrap;
+      font-size: 1rem;
+      font-weight: 700;
+      transition: var(--transition);
     }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--brown), var(--brown-dark));
-      color: #fff;
-      box-shadow: 0 12px 28px rgba(122, 63, 34, .24);
-    }
-    .btn-primary:hover { transform: translateY(-2px); }
-    .btn-light { background: #fff; color: var(--brown-dark); border: 1px solid var(--line); }
-    .btn-soft { background: #f1dfcf; color: var(--brown-dark); }
 
-    header {
+    .btn-primary{
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover{
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    .btn-secondary{
+      background: #efe1d1;
+      color: var(--primary-dark);
+      border: 1px solid #e2d1be;
+    }
+
+    .btn-secondary:hover{
+      background: #e9d8c6;
+    }
+
+    .section{
+      padding: 80px 0;
+    }
+
+    .section-title{
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .section-title span{
+      display: inline-block;
+      background: #f2e6d9;
+      color: var(--primary);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .section-title h2{
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      margin-bottom: 10px;
+      color: var(--primary-dark);
+    }
+
+    .section-title p{
+      max-width: 760px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    /* Header */
+    header{
       position: sticky;
       top: 0;
-      z-index: 50;
-      background: rgba(255, 250, 246, .93);
+      z-index: 1000;
+      background: rgba(255, 250, 245, 0.93);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(234, 216, 200, .9);
+      border-bottom: 1px solid rgba(199, 154, 99, 0.18);
     }
-    .nav {
+
+    .navbar{
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 18px;
+      justify-content: space-between;
+      gap: 20px;
       padding: 14px 0;
     }
-    .brand {
+
+    .logo-wrap{
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       min-width: fit-content;
     }
-    .brand-mark {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: radial-gradient(circle at 30% 20%, #f7d599, #9c5e2f 62%, #4b2917);
-      color: #fff;
-      font-size: 25px;
-      font-weight: 900;
-      box-shadow: 0 12px 24px rgba(122, 63, 34, .22);
-    }
-    .brand-text strong { display: block; color: var(--brown-dark); font-size: 24px; line-height: 1.1; }
-    .brand-text span { display: block; color: var(--muted); font-size: 12px; }
-    .nav-links { display: flex; gap: 16px; align-items: center; justify-content: center; color: #3b2a1f; font-weight: 700; font-size: 14px; }
-    .nav-links a:hover { color: var(--brown); }
 
-    .hero {
-      min-height: 88vh;
-      display: grid;
+    .logo-wrap img{
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      border-radius: 14px;
+      background: transparent;
+    }
+
+    .logo-text h1{
+      font-size: 1.3rem;
+      color: var(--primary-dark);
+      margin-bottom: -3px;
+    }
+
+    .logo-text p{
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .nav-links{
+      display: flex;
       align-items: center;
-      background:
-        radial-gradient(circle at 18% 18%, rgba(199, 149, 85, .28), transparent 28%),
-        radial-gradient(circle at 84% 12%, rgba(122, 63, 34, .13), transparent 32%),
-        linear-gradient(135deg, #fffaf6 0%, #f4e2d0 100%);
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-links a{
+      color: var(--text);
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover{
+      color: var(--primary);
+    }
+
+    /* Hero */
+    .hero{
+      padding: 70px 0 40px;
+    }
+
+    .hero-grid{
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .hero-content .badge{
+      display: inline-block;
+      background: #f2e6d9;
+      color: var(--primary);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      font-size: 0.95rem;
+    }
+
+    .hero-content h2{
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.2;
+      margin-bottom: 18px;
+      color: var(--primary-dark);
+    }
+
+    .hero-content p{
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions{
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .hero-features{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .hero-feature{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-feature strong{
+      display: block;
+      color: var(--primary-dark);
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .hero-feature span{
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .hero-card{
+      background: linear-gradient(145deg, #fff, #f4e8da);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      position: relative;
       overflow: hidden;
     }
-    .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 42px; align-items: center; padding: 72px 0 84px; }
-    .eyebrow {
-      display: inline-flex;
+
+    .hero-card::before{
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(199,154,99,0.25) 0%, rgba(199,154,99,0) 70%);
+      top: -50px;
+      left: -50px;
+    }
+
+    .hero-logo{
+      display: flex;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .hero-logo img{
+      width: 240px;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    .hero-card h3{
+      text-align: center;
+      font-size: 1.7rem;
+      margin-bottom: 10px;
+      color: var(--primary-dark);
+    }
+
+    .hero-card p{
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .hero-points{
+      display: grid;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .hero-points div{
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px 14px;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* Products */
+    .products-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      height: 100%;
+    }
+
+    .card:hover{
+      transform: translateY(-6px);
+    }
+
+    .product-image{
+      height: 220px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #e7c5a2, #a86c3c);
+      display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 8px 16px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255,255,255,.74);
-      color: var(--brown);
+      justify-content: center;
+      color: #fff;
+      font-size: 1.5rem;
       font-weight: 800;
       margin-bottom: 18px;
-      font-size: 14px;
-    }
-    h1 { font-size: clamp(38px, 5.4vw, 72px); line-height: 1.13; color: var(--brown-dark); margin-bottom: 18px; letter-spacing: -.7px; }
-    .hero p { color: var(--muted); font-size: 19px; max-width: 700px; margin-bottom: 28px; }
-    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 26px; }
-    .quick-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 610px; }
-    .quick-stat { background: rgba(255,255,255,.75); border: 1px solid var(--line); border-radius: 18px; padding: 14px; box-shadow: var(--shadow-soft); }
-    .quick-stat strong { display: block; color: var(--brown); font-size: 21px; }
-    .quick-stat span { color: var(--muted); font-size: 13px; }
-    .hero-panel {
-      position: relative;
-      border: 1px solid var(--line);
-      border-radius: 36px;
-      padding: 18px;
-      background: #fff;
-      box-shadow: var(--shadow);
-    }
-    .hero-img {
-      height: 460px;
-      width: 100%;
-      object-fit: cover;
-      border-radius: 28px;
-    }
-    .perfume-badge {
-      position: absolute;
-      right: -18px;
-      bottom: 36px;
-      width: 250px;
-      background: rgba(255,255,255,.96);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 16px;
-      box-shadow: 0 18px 45px rgba(74, 41, 23, .16);
-    }
-    .perfume-badge strong { color: var(--brown); display: block; margin-bottom: 6px; }
-    .perfume-badge span { color: var(--muted); font-size: 13px; }
-
-    section { padding: 82px 0; }
-    .section-title { text-align: center; margin-bottom: 40px; }
-    .section-title .tag { display: inline-block; color: var(--brown); background: #f2e4d5; border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; font-weight: 800; margin-bottom: 14px; font-size: 14px; }
-    .section-title h2 { font-size: clamp(30px, 4vw, 44px); color: var(--brown-dark); margin-bottom: 8px; }
-    .section-title p { color: var(--muted); max-width: 790px; margin: auto; font-size: 17px; }
-
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: var(--shadow-soft);
-      transition: .25s ease;
-    }
-    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-    .product-img { width: 100%; height: 230px; object-fit: cover; border-radius: 20px; margin-bottom: 18px; border: 1px solid #f2e0cf; }
-    .pill { display: inline-block; background: #f6eadc; color: var(--brown); padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 800; margin-bottom: 10px; }
-    .card h3 { color: var(--brown-dark); font-size: 24px; margin-bottom: 8px; }
-    .card p { color: var(--muted); margin-bottom: 16px; }
-    .product-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 16px 0 18px; }
-    .price { color: var(--brown); font-size: 21px; font-weight: 900; }
-    .rate { color: #a97437; font-size: 14px; }
-
-    .occasion-card { display: grid; grid-template-columns: 56px 1fr; gap: 14px; align-items: start; }
-    .icon {
-      width: 56px; height: 56px; border-radius: 18px; display: grid; place-items: center;
-      background: linear-gradient(135deg, #f5dcc0, #d1a56d);
-      color: var(--brown-dark); font-size: 25px;
+      text-align: center;
+      padding: 20px;
     }
 
-    .video-card { overflow: hidden; padding: 0; }
-    .video-card video { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #1f1712; border-bottom: 1px solid var(--line); }
-    .video-body { padding: 22px; }
-    .video-body h3 { color: var(--brown-dark); font-size: 24px; margin-bottom: 8px; }
-    .video-body p { color: var(--muted); }
-    .video-notes { display: grid; gap: 10px; margin-top: 16px; }
-    .video-notes div { background: #fff7ef; border: 1px solid #f1dfcf; border-radius: 15px; padding: 11px 13px; color: #5f4939; }
+    .product-tag{
+      display: inline-block;
+      background: #f4eadf;
+      color: var(--primary);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
 
-    .social-section { background: linear-gradient(180deg, #fffaf6 0%, #f6e8d9 100%); }
-    .social-card .social-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
-    .social-card .social-name { color: var(--brown-dark); font-size: 22px; font-weight: 900; }
-    .social-card .social-chip { background: #fff2e5; color: var(--brown); border: 1px solid #f1dfcf; border-radius: 999px; padding: 5px 10px; font-size: 12px; font-weight: 800; }
-    .social-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    .card h3{
+      color: var(--primary-dark);
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
 
-    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
-    .metric { text-align: center; background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 24px 16px; box-shadow: var(--shadow-soft); }
-    .metric strong { display: block; color: var(--brown); font-size: 34px; line-height: 1.1; margin-bottom: 8px; }
-    .metric span { color: var(--muted); font-weight: 700; }
-    .plan { margin-top: 22px; background: #fff; border: 1px solid var(--line); border-radius: 24px; padding: 24px; box-shadow: var(--shadow-soft); color: var(--muted); }
-    .plan strong { color: var(--brown-dark); }
+    .card p{
+      color: var(--muted);
+      margin-bottom: 14px;
+      min-height: 72px;
+    }
 
-    .criteria-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    .criteria { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 20px; box-shadow: var(--shadow-soft); }
-    .criteria b { display: block; color: var(--brown-dark); margin: 10px 0 6px; font-size: 18px; }
-    .criteria p { color: var(--muted); font-size: 14px; }
+    .price{
+      color: var(--primary-dark);
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
 
-    .cta {
-      background:
-        linear-gradient(rgba(47,33,24,.88), rgba(47,33,24,.88)),
-        url("https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=1400&q=80") center/cover;
-      border-radius: 34px;
-      padding: 44px;
-      color: #fff;
+    /* Occasions */
+    .occasion-grid{
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: repeat(3, 1fr);
       gap: 22px;
-      align-items: center;
+      margin-top: 40px;
+    }
+
+    .occasion-item{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
       box-shadow: var(--shadow);
     }
-    .cta h2 { font-size: clamp(28px, 4vw, 42px); margin-bottom: 8px; }
-    .cta p { color: #ead8c8; }
-    .newsletter { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
-    .newsletter input { min-width: 260px; border: 1px solid rgba(255,255,255,.38); border-radius: 999px; padding: 12px 16px; outline: none; font-family: inherit; }
 
-    .project-footer { padding: 34px 0; border-top: 1px solid var(--line); background: #fff7ef; }
-    .project-mini {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 18px;
-      align-items: start;
-      font-size: 14px;
+    .occasion-item h3{
+      margin-bottom: 10px;
+      color: var(--primary-dark);
+    }
+
+    .occasion-item p{
       color: var(--muted);
     }
-    .mini-box { background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 16px; }
-    .mini-box h3 { color: var(--brown-dark); margin-bottom: 10px; font-size: 18px; }
-    .mini-list { display: grid; gap: 6px; }
-    .mini-list div { display: flex; gap: 8px; align-items: flex-start; }
-    .footer-bottom { text-align: center; color: #806b5a; margin-top: 18px; font-size: 13px; }
 
-    @media (max-width: 980px) {
-      .hero-grid, .grid-2, .cta, .project-mini { grid-template-columns: 1fr; }
-      .grid-3, .metrics, .criteria-grid { grid-template-columns: repeat(2, 1fr); }
-      .nav { align-items: flex-start; flex-direction: column; }
-      .nav-links { justify-content: flex-start; flex-wrap: wrap; }
-      .perfume-badge { position: static; width: auto; margin-top: 14px; }
-      .hero-img { height: 340px; }
+    /* Videos */
+    .videos-grid{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 26px;
+      margin-top: 40px;
     }
-    @media (max-width: 640px) {
-      .grid-3, .metrics, .criteria-grid, .quick-stats { grid-template-columns: 1fr; }
-      .hero { min-height: auto; }
-      .hero-grid { padding: 42px 0 56px; }
-      section { padding: 58px 0; }
-      .cta { padding: 30px 22px; }
-      .newsletter input { min-width: 100%; }
+
+    .video-card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .video-card video{
+      width: 100%;
+      display: block;
+      background: #000;
+      max-height: 340px;
+      object-fit: cover;
+    }
+
+    .video-body{
+      padding: 22px;
+    }
+
+    .video-body h3{
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+      font-size: 1.35rem;
+    }
+
+    .video-body p{
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .video-meta{
+      display: grid;
+      gap: 10px;
+      margin: 16px 0 18px;
+    }
+
+    .video-meta div{
+      background: #fbf6f1;
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      border-radius: 14px;
+      color: var(--text);
+    }
+
+    /* Social */
+    .social-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .social-card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .social-card h3{
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+    }
+
+    .social-card p{
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .social-actions{
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    /* Analytics */
+    .metrics{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 38px;
+    }
+
+    .metric{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 18px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .metric strong{
+      display: block;
+      font-size: 2rem;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+    }
+
+    .metric span{
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .analytics-plan{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      margin-top: 34px;
+    }
+
+    .plan-card{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .plan-card h3{
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+    }
+
+    .plan-card ul{
+      padding-right: 20px;
+      color: var(--muted);
+    }
+
+    .plan-card li{
+      margin-bottom: 10px;
+    }
+
+    /* CTA */
+    .cta{
+      background: linear-gradient(135deg, var(--primary-dark), #8d5a35);
+      color: white;
+      border-radius: 28px;
+      padding: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .cta h3{
+      font-size: 1.9rem;
+      margin-bottom: 8px;
+    }
+
+    .cta p{
+      color: rgba(255,255,255,0.85);
+    }
+
+    .cta .btn-secondary{
+      background: #fff;
+      color: var(--primary-dark);
+      border: none;
+    }
+
+    /* Footer */
+    footer{
+      padding: 70px 0 30px;
+    }
+
+    .footer-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .footer-box{
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .footer-box h3{
+      color: var(--primary-dark);
+      margin-bottom: 14px;
+    }
+
+    .footer-box p,
+    .footer-box li{
+      color: var(--muted);
+    }
+
+    .footer-box ul{
+      padding-right: 20px;
+    }
+
+    .footer-box li{
+      margin-bottom: 8px;
+    }
+
+    .copyright{
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 22px;
+    }
+
+    /* Responsive */
+    @media (max-width: 991px){
+      .hero-grid,
+      .videos-grid,
+      .footer-grid,
+      .analytics-plan{
+        grid-template-columns: 1fr;
+      }
+
+      .products-grid,
+      .occasion-grid,
+      .social-grid,
+      .metrics{
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-features{
+        grid-template-columns: 1fr;
+      }
+
+      .navbar{
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links{
+        justify-content: flex-start;
+      }
+
+      .cta{
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 640px){
+      .products-grid,
+      .occasion-grid,
+      .social-grid,
+      .metrics{
+        grid-template-columns: 1fr;
+      }
+
+      .hero{
+        padding-top: 40px;
+      }
+
+      .hero-content h2{
+        font-size: 2rem;
+      }
+
+      .section{
+        padding: 60px 0;
+      }
     }
   </style>
 </head>
 <body>
+
+  <!-- Header -->
   <header>
-    <div class="container nav">
-      <a class="brand" href="#home" aria-label="أريج">
-        <span class="brand-mark">أ</span>
-        <span class="brand-text"><strong>أريج</strong><span>عطور سعودية فاخرة</span></span>
-      </a>
-      <nav class="nav-links" aria-label="روابط المنصة">
+    <div class="container navbar">
+      <div class="logo-wrap">
+        <img src="logo-areej.png" alt="شعار أريج">
+        <div class="logo-text">
+          <h1>أريج</h1>
+          <p>منصة تسويقية للعطور السعودية</p>
+        </div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#home">الرئيسية</a>
         <a href="#products">المنتجات</a>
         <a href="#occasion">اختاري عطرك</a>
         <a href="#videos">الفيديوهات</a>
-        <a href="#social">التواصل</a>
-        <a href="#analytics">الأداء</a>
-        <a href="#criteria">المعايير</a>
+        <a href="#social">التواصل الاجتماعي</a>
+        <a href="#analytics">التحليلات</a>
+        <a href="#project">بيانات المشروع</a>
       </nav>
-      <a class="btn btn-primary" href="#shop">تسوّقي الآن</a>
+
+      <a class="btn btn-primary" href="#shop">تسوقي الآن</a>
     </div>
   </header>
 
-  <main id="home">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow">✨ منصة تسويقية رقمية لشركة أريج</span>
-          <h1>اختاري عطرك حسب شخصيتك ومناسبتك</h1>
-          <p>
-            أريج منصة رقمية تعرض العطور السعودية بأسلوب تسويقي يجمع بين الصور الجذابة، الفيديوهات المرتبطة بتجربة العطر، التفاعل عبر وسائل التواصل، وقياس الأداء لتحسين تجربة العميلة.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#products">استكشفي العطور</a>
-            <a class="btn btn-soft" href="#occasion">اختاري حسب المناسبة</a>
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="badge">هوية عطرية سعودية بلمسة رقمية عصرية</div>
+        <h2>اكتشفي عالم أريج للعطور السعودية الفاخرة</h2>
+        <p>
+          منصة تسويقية رقمية صُممت لتقديم تجربة تفاعلية أنيقة، تعرض المنتجات بوضوح، 
+          وتوظف المحتوى التسويقي والفيديو ووسائل التواصل الاجتماعي وقياس الأداء 
+          من أجل زيادة التفاعل وتعزيز قرار الشراء.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#products">استعرضي المنتجات</a>
+          <a class="btn btn-secondary" href="#videos">شاهدي الفيديوهات</a>
+        </div>
+
+        <div class="hero-features">
+          <div class="hero-feature">
+            <strong>محتوى جذاب</strong>
+            <span>نصوص وصور وفيديوهات تخدم هوية العلامة</span>
           </div>
-          <div class="quick-stats">
-            <div class="quick-stat"><strong>3</strong><span>عطور رئيسية حسب المناسبة</span></div>
-            <div class="quick-stat"><strong>2</strong><span>فيديوهات تسويقية للعطر</span></div>
-            <div class="quick-stat"><strong>4</strong><span>مؤشرات لقياس الأداء</span></div>
+          <div class="hero-feature">
+            <strong>تكامل اجتماعي</strong>
+            <span>ربط فعّال مع Instagram وX وTikTok</span>
           </div>
-        </div>
-        <div class="hero-panel">
-          <img class="hero-img" src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1000&q=80" alt="زجاجة عطر فاخرة" />
-          <div class="perfume-badge">
-            <strong>إصدار أريج المختار</strong>
-            <span>عود ملكي بلمسات العود والعنبر لمناسباتك الراقية.</span>
+          <div class="hero-feature">
+            <strong>قياس الأداء</strong>
+            <span>مؤشرات واضحة لتحسين التسويق الرقمي</span>
           </div>
         </div>
       </div>
-    </section>
 
-    <section id="products">
-      <div class="container">
-        <div class="section-title">
-          <span class="tag">منتجات أريج</span>
-          <h2>مجموعة عطرية تناسب كل لحظة</h2>
-          <p>وصف تسويقي واضح لكل منتج يساعد العميلة على فهم شخصية العطر واختيار الأنسب لها.</p>
+      <div class="hero-card">
+        <div class="hero-logo">
+          <img src="logo-areej.png" alt="شعار أريج">
         </div>
-        <div class="grid-3">
-          <article class="card">
-            <img class="product-img" src="https://images.unsplash.com/photo-1619994403073-2cec844b8e63?auto=format&fit=crop&w=900&q=80" alt="عطر عود ملكي" />
-            <span class="pill">للمناسبات الفاخرة</span>
-            <h3>عود ملكي</h3>
-            <p>عطر شرقي فاخر بلمسات العود والعنبر، يمنحك حضورًا أنيقًا يناسب المناسبات الرسمية والسهرات الراقية.</p>
-            <div class="product-row"><span class="price">249 ر.س</span><span class="rate">★★★★★ الأكثر فخامة</span></div>
-            <a class="btn btn-primary" href="#shop">اطلبي الآن</a>
-          </article>
+        <h3>أريج</h3>
+        <p>
+          تجربة رقمية تسويقية تعكس فخامة العطور السعودية وتبرز شخصية كل عطر 
+          بطريقة سهلة، أنيقة، ومتوافقة مع الجوال وسطح المكتب.
+        </p>
 
-          <article class="card">
-            <img class="product-img" src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=900&q=80" alt="عطر ورد الطائف" />
-            <span class="pill">للزيارات واللقاءات</span>
-            <h3>ورد الطائف</h3>
-            <p>نفحات وردية ناعمة مستوحاة من الورد السعودي، تعبّر عن الرقي والهدوء وتناسب اللقاءات النهارية والزيارات العائلية.</p>
-            <div class="product-row"><span class="price">189 ر.س</span><span class="rate">★★★★★ اختيار ناعم</span></div>
-            <a class="btn btn-primary" href="#shop">اطلبي الآن</a>
-          </article>
-
-          <article class="card">
-            <img class="product-img" src="https://images.unsplash.com/photo-1600612253971-422e7f7faeb6?auto=format&fit=crop&w=900&q=80" alt="عطر مسك أبيض" />
-            <span class="pill">للدوام والاستخدام اليومي</span>
-            <h3>مسك أبيض</h3>
-            <p>رائحة نظيفة ومنعشة تدوم طوال اليوم، مثالية للدوام والجامعة والاستخدام اليومي لمن تبحث عن البساطة والأناقة.</p>
-            <div class="product-row"><span class="price">159 ر.س</span><span class="rate">★★★★☆ انتعاش يومي</span></div>
-            <a class="btn btn-primary" href="#shop">اطلبي الآن</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="occasion">
-      <div class="container">
-        <div class="section-title">
-          <span class="tag">تجربة تفاعلية</span>
-          <h2>اختاري عطرك حسب المناسبة</h2>
-          <p>هذا القسم يحوّل المحتوى التسويقي إلى تجربة تساعد العميلة على اختيار العطر المناسب بدل الاكتفاء بعرض المنتجات.</p>
-        </div>
-        <div class="grid-3">
-          <div class="card occasion-card"><div class="icon">🌙</div><div><h3>للمناسبات والسهرات</h3><p>اختاري عود ملكي إذا كنتِ تبحثين عن حضور شرقي فاخر وثابت يلفت الانتباه.</p></div></div>
-          <div class="card occasion-card"><div class="icon">🌸</div><div><h3>للزيارات واللقاءات</h3><p>ورد الطائف يناسب الإطلالات الهادئة والزيارات العائلية برائحة وردية ناعمة.</p></div></div>
-          <div class="card occasion-card"><div class="icon">☁️</div><div><h3>للدوام والجامعة</h3><p>مسك أبيض يمنحك رائحة نظيفة ومنعشة مناسبة للاستخدام اليومي الطويل.</p></div></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="videos">
-      <div class="container">
-        <div class="section-title">
-          <span class="tag">فيديوهات تسويقية</span>
-          <h2>محتوى مرئي مرتبط بتجربة العطر</h2>
-          <p>الفيديوهات هنا ليست عامة؛ بل مرتبطة بفكرة اختيار العطر حسب المناسبة وروتين ثبات العطر طوال اليوم.</p>
-        </div>
-        <div class="grid-2">
-          <article class="card video-card">
-            <video controls preload="metadata" poster="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1000&q=80">
-              <source src="https://www.pexels.com/download/video/7815884/" type="video/mp4">
-              متصفحك لا يدعم تشغيل الفيديو.
-            </video>
-            <div class="video-body">
-              <span class="pill">فيديو اختيار العطر</span>
-              <h3>كيف تختارين عطرك حسب المناسبة؟</h3>
-              <p>فيديو تسويقي يربط بين المناسبة والمنتج: عود ملكي للسهرات، ورد الطائف للزيارات، ومسك أبيض للدوام.</p>
-              <div class="video-notes">
-                <div><strong>الفكرة:</strong> مساعدة العميلة على الاختيار بسرعة.</div>
-                <div><strong>التفاعل:</strong> أي عطر يناسب مناسبتك القادمة؟</div>
-                <div><strong>التحويل:</strong> زر مباشر إلى المنتجات المناسبة.</div>
-              </div>
-            </div>
-          </article>
-
-          <article class="card video-card">
-            <video controls preload="metadata" poster="https://images.unsplash.com/photo-1619994403073-2cec844b8e63?auto=format&fit=crop&w=1000&q=80">
-              <source src="https://www.pexels.com/download/video/4154241/" type="video/mp4">
-              متصفحك لا يدعم تشغيل الفيديو.
-            </video>
-            <div class="video-body">
-              <span class="pill">فيديو روتين عطري</span>
-              <h3>روتين عطري يدوم طوال اليوم</h3>
-              <p>فيديو يوضح طريقة استخدام العطر للحصول على ثبات أفضل، مع إبراز مسك أبيض كخيار يومي أنيق.</p>
-              <div class="video-notes">
-                <div><strong>الفكرة:</strong> تقديم قيمة عملية للعميلة.</div>
-                <div><strong>التفاعل:</strong> شاركينا طريقة تثبيت عطرك.</div>
-                <div><strong>التحويل:</strong> توصية مباشرة بعطر الاستخدام اليومي.</div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="social" class="social-section">
-      <div class="container">
-        <div class="section-title">
-          <span class="tag">التواصل الاجتماعي</span>
-          <h2>مجتمع أريج الرقمي</h2>
-          <p>تتكامل المنصة مع وسائل التواصل من خلال أزرار متابعة، أفكار منشورات، ودعوات تفاعل واضحة لزيادة المشاركة.</p>
-        </div>
-        <div class="grid-3">
-          <article class="card social-card"><div class="social-top"><span class="social-name">Instagram</span><span class="social-chip">#أريج_اختياري</span></div><p>منشورات بصرية تعرض العبوات والتغليف وتجارب العميلات، مع دعوة لمشاركة صورة العطر المفضل.</p><div class="social-actions"><a class="btn btn-primary" href="https://www.instagram.com" target="_blank">متابعة</a><a class="btn btn-light" href="#videos">مشاهدة المحتوى</a></div></article>
-          <article class="card social-card"><div class="social-top"><span class="social-name">TikTok</span><span class="social-chip">روتين عطري</span></div><p>مقاطع قصيرة عن اختيار العطر حسب المناسبة وروتين ثبات الرائحة بطريقة تناسب الجمهور الشاب.</p><div class="social-actions"><a class="btn btn-primary" href="https://www.tiktok.com" target="_blank">متابعة</a><a class="btn btn-light" href="#occasion">اختاري عطرك</a></div></article>
-          <article class="card social-card"><div class="social-top"><span class="social-name">X</span><span class="social-chip">تصويت يومي</span></div><p>منشورات سريعة لطرح أسئلة مثل: تفضلين العود أم الورد؟ مع ربط الإجابات بتوصيات المنتجات.</p><div class="social-actions"><a class="btn btn-primary" href="https://www.x.com" target="_blank">متابعة</a><a class="btn btn-light" href="#products">عرض المنتجات</a></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section id="analytics">
-      <div class="container">
-        <div class="section-title">
-          <span class="tag">آلية قياس الأداء</span>
-          <h2>تحليلات مقترحة لتحسين التسويق</h2>
-          <p>لا تكتفي المنصة بعرض المحتوى؛ بل تقترح مؤشرات أداء تساعد على تطوير التسويق الرقمي بناءً على سلوك الزائرات.</p>
-        </div>
-        <div class="metrics">
-          <div class="metric"><strong>12K</strong><span>عدد الزائرات شهريًا</span></div>
-          <div class="metric"><strong>2:35</strong><span>متوسط وقت التصفح</span></div>
-          <div class="metric"><strong>4.2%</strong><span>نسبة النقر على الأزرار</span></div>
-          <div class="metric"><strong>8.7%</strong><span>معدل التحويل للشراء</span></div>
-        </div>
-        <div class="plan">
-          <strong>كيف تُستخدم هذه المؤشرات؟</strong>
-          تُستخدم البيانات لمعرفة أكثر المنتجات جذبًا، تحسين ترتيب العطور داخل الصفحة، تطوير العروض، تعديل عبارات الأزرار، وتوجيه الحملات نحو المنصات التي تحقق أعلى تفاعل.
-        </div>
-      </div>
-    </section>
-
-    <section id="criteria">
-      <div class="container">
-        <div class="section-title">
-          <span class="tag">تغطية معايير التقييم</span>
-          <h2>كيف تحقق المنصة متطلبات المشروع؟</h2>
-          <p>تم تضمين عناصر التقييم داخل المنصة نفسها بطريقة مختصرة ومنظمة.</p>
-        </div>
-        <div class="criteria-grid">
-          <div class="criteria"><div class="icon">🧭</div><b>UX/UI</b><p>تنقل واضح، أزرار مباشرة، أقسام مرتبة، وتصميم متجاوب مع الجوال وسطح المكتب.</p></div>
-          <div class="criteria"><div class="icon">🎥</div><b>محتوى تسويقي</b><p>نصوص أصلية، صور منتجات، فيديوهات عطرية، وتجربة اختيار حسب المناسبة.</p></div>
-          <div class="criteria"><div class="icon">📱</div><b>وسائل التواصل</b><p>Instagram وTikTok وX مع أزرار متابعة وأفكار تفاعل وتصويت ومشاركة.</p></div>
-          <div class="criteria"><div class="icon">📊</div><b>قياس الأداء</b><p>زوار، وقت تصفح، نسبة نقر، معدل تحويل، مع تفسير استخدامها في التحسين.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="shop">
-      <div class="container">
-        <div class="cta">
-          <div>
-            <h2>ابدئي رحلتك العطرية مع أريج</h2>
-            <p>اختاري عطرك حسب مناسبتك، وشاركي تجربتك مع مجتمع أريج الرقمي.</p>
-            <div class="newsletter">
-              <input type="email" placeholder="اكتبي بريدك الإلكتروني للحصول على الخصم" aria-label="البريد الإلكتروني" />
-              <a class="btn btn-light" href="#products">الحصول على خصم 15%</a>
-            </div>
-          </div>
-          <a class="btn btn-light" href="#products">تسوّقي المجموعة</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="project-footer">
-    <div class="container project-mini">
-      <div class="mini-box">
-        <h3>📌 بيانات المشروع</h3>
-        <div class="mini-list">
-          <div>🎓 بكالوريوس الاتصال التسويقي — MRKC 324 التسويق الرقمي</div>
-          <div>🏫 الشعبة MR2 — الفصل الدراسي الثاني / 1447هـ</div>
-          <div>👩‍🏫 أستاذة المقرر: أ.د/ دعاء فتحي سالم</div>
-        </div>
-      </div>
-      <div class="mini-box">
-        <h3>👥 أعضاء المجموعة</h3>
-        <div class="mini-list">
-          <div>لجين الشمراني — 2407635</div>
-          <div>لمى عابد — 2411927</div>
-          <div>ديانة هشام مطر — 2312851</div>
-          <div>نوال جيزاوي — 2407940</div>
+        <div class="hero-points">
+          <div>✨ عرض واضح لمنتجات العطور وخدمات العلامة</div>
+          <div>🎥 محتوى فيديو تسويقي مرتبط بتجربة العطر</div>
+          <div>📱 دعوات تفاعل ومتابعة عبر وسائل التواصل</div>
+          <div>📊 لوحة أداء لقياس التفاعل والتحسين المستمر</div>
         </div>
       </div>
     </div>
-    <div class="container footer-bottom">منصة أريج التسويقية | مشروع أكاديمي لمقرر التسويق الرقمي</div>
+  </section>
+
+  <!-- Products -->
+  <section class="section" id="products">
+    <div class="container">
+      <div class="section-title">
+        <span>منتجات مختارة</span>
+        <h2>مجموعة عطور أريج</h2>
+        <p>
+          مجموعة تسويقية منتقاة تركز على الذوق السعودي، مع وصف أصلي لكل منتج 
+          يساعد على توضيح الفكرة التسويقية والجمهور المستهدف.
+        </p>
+      </div>
+
+      <div class="products-grid">
+        <div class="card">
+          <div class="product-image">عود ملكي</div>
+          <div class="product-tag">الأكثر فخامة</div>
+          <h3>عود ملكي</h3>
+          <p>عطر شرقي فاخر بلمسات العود والعنبر، يمنحك حضورًا أنيقًا يناسب المناسبات الرسمية والسهرات الراقية.</p>
+          <div class="price">249 ر.س</div>
+          <a href="#shop" class="btn btn-primary">اطلبي الآن</a>
+        </div>
+
+        <div class="card">
+          <div class="product-image">ورد الطائف</div>
+          <div class="product-tag">لمحبات النفحات الوردية</div>
+          <h3>ورد الطائف</h3>
+          <p>نفحات وردية ناعمة مستوحاة من الورد السعودي، تعبّر عن الرقي والهدوء وتناسب اللقاءات النهارية والزيارات العائلية.</p>
+          <div class="price">189 ر.س</div>
+          <a href="#shop" class="btn btn-primary">اطلبي الآن</a>
+        </div>
+
+        <div class="card">
+          <div class="product-image">مسك أبيض</div>
+          <div class="product-tag">انتعاش يومي</div>
+          <h3>مسك أبيض</h3>
+          <p>رائحة نظيفة ومنعشة تدوم طوال اليوم، مثالية للدوام والجامعة والاستخدام اليومي لمن تبحث عن البساطة والأناقة.</p>
+          <div class="price">159 ر.س</div>
+          <a href="#shop" class="btn btn-primary">اطلبي الآن</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Occasion -->
+  <section class="section" id="occasion">
+    <div class="container">
+      <div class="section-title">
+        <span>تجربة تسويقية تفاعلية</span>
+        <h2>اختاري عطرك حسب المناسبة</h2>
+        <p>
+          هذا القسم يساعد الزائرة على ربط المنتج باحتياجها اليومي، وهي استراتيجية 
+          محتوى تسويقي فعّالة تشجع على التفاعل وتسهّل قرار الشراء.
+        </p>
+      </div>
+
+      <div class="occasion-grid">
+        <div class="occasion-item">
+          <h3>للمناسبات والسهرات</h3>
+          <p>إذا كنتِ تبحثين عن حضور قوي وفخم في الحفلات والمناسبات الرسمية، فاختيارك الأنسب هو <strong>عود ملكي</strong> بفضل طابعه الشرقي العميق.</p>
+        </div>
+
+        <div class="occasion-item">
+          <h3>للزيارات واللقاءات الهادئة</h3>
+          <p>لإطلالة أنثوية ناعمة ولمسة راقية خلال الزيارات واللقاءات النهارية، ننصحك بعطر <strong>ورد الطائف</strong> المستوحى من الورد السعودي.</p>
+        </div>
+
+        <div class="occasion-item">
+          <h3>للدوام والجامعة</h3>
+          <p>عند الحاجة إلى رائحة نظيفة ومنعشة تدوم طوال اليوم وتناسب الروتين اليومي، فإن <strong>مسك أبيض</strong> هو الخيار المثالي.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Videos -->
+  <section class="section" id="videos">
+    <div class="container">
+      <div class="section-title">
+        <span>محتوى فيديو تسويقي</span>
+        <h2>فيديوهات مرتبطة بتجربة العطر</h2>
+        <p>
+          تم تخصيص هذا القسم لفيديوهات تسويقية مرتبطة بالعطور فعلًا، بما يعزز 
+          الوعي بالمنتجات ويشجع الجمهور على التفاعل والشراء.
+        </p>
+      </div>
+
+      <div class="videos-grid">
+        <div class="video-card">
+          <video controls preload="metadata">
+            <source src="videos/perfume-occasion.mp4" type="video/mp4">
+            متصفحك لا يدعم تشغيل الفيديو.
+          </video>
+          <div class="video-body">
+            <h3>كيف تختارين عطرك حسب المناسبة؟</h3>
+            <p>
+              فيديو تسويقي يشرح كيفية اختيار العطر المناسب للدوام، المناسبات، 
+              والزيارات العائلية، مع ربط كل موقف بمنتج من أريج.
+            </p>
+
+            <div class="video-meta">
+              <div><strong>الهدف التسويقي:</strong> زيادة الوعي بالمنتجات وتوجيه العميلة لاختيار العطر المناسب.</div>
+              <div><strong>الدعوة للتفاعل:</strong> اكتبي في التعليقات أي عطر يناسب شخصيتك أكثر.</div>
+              <div><strong>الدعوة للشراء:</strong> زر مباشر يقود إلى قسم المنتجات.</div>
+            </div>
+
+            <a href="#products" class="btn btn-primary">شاهدي المنتجات المرتبطة</a>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <video controls preload="metadata">
+            <source src="videos/perfume-routine.mp4" type="video/mp4">
+            متصفحك لا يدعم تشغيل الفيديو.
+          </video>
+          <div class="video-body">
+            <h3>روتين عطري يدوم طوال اليوم</h3>
+            <p>
+              فيديو توعوي تسويقي يوضح خطوات استخدام العطر بطريقة صحيحة للحصول 
+              على ثبات أفضل، مع إبراز قيمة العطر كجزء من الروتين اليومي الأنيق.
+            </p>
+
+            <div class="video-meta">
+              <div><strong>الهدف التسويقي:</strong> تعزيز استخدام المنتج ورفع القيمة المدركة لدى الجمهور.</div>
+              <div><strong>الدعوة للتفاعل:</strong> شاركينا أفضل خطوة تعتمدينها لثبات عطرك.</div>
+              <div><strong>الدعوة للشراء:</strong> اكتشفي عطر مسك أبيض المناسب للاستخدام اليومي.</div>
+            </div>
+
+            <a href="#shop" class="btn btn-primary">تسوقي الآن</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social -->
+  <section class="section" id="social">
+    <div class="container">
+      <div class="section-title">
+        <span>دمج وسائل التواصل الاجتماعي</span>
+        <h2>تفاعل رقمي يعزز الحضور التسويقي</h2>
+        <p>
+          هذا القسم يوضح كيف يتم ربط المنصة بوسائل التواصل الاجتماعي من خلال 
+          أزرار متابعة، أفكار منشورات، ودعوات واضحة لزيادة التفاعل مع الجمهور.
+        </p>
+      </div>
+
+      <div class="social-grid">
+        <div class="social-card">
+          <h3>Instagram</h3>
+          <p>
+            عرض محتوى بصري للعطور والتغليف الفاخر، مع منشورات قصيرة تعرف 
+            بمميزات كل عطر وتبرز الهوية البصرية لعلامة أريج.
+          </p>
+          <div class="social-actions">
+            <a href="#" class="btn btn-primary">متابعة الحساب</a>
+            <a href="#videos" class="btn btn-secondary">مشاهدة المحتوى</a>
+          </div>
+        </div>
+
+        <div class="social-card">
+          <h3>X</h3>
+          <p>
+            مشاركة رسائل تسويقية سريعة مثل: "اختاري عطرك حسب المناسبة" 
+            و"ما هو عطرك المفضل من أريج؟" لتحفيز الحوار والمشاركة.
+          </p>
+          <div class="social-actions">
+            <a href="#" class="btn btn-primary">متابعة الحساب</a>
+            <a href="#products" class="btn btn-secondary">اكتشفي العطور</a>
+          </div>
+        </div>
+
+        <div class="social-card">
+          <h3>TikTok</h3>
+          <p>
+            نشر فيديوهات قصيرة مرتبطة بتجربة العطر، مثل اختيار العطر المناسب 
+            وروتين الثبات اليومي، مع أسلوب بسيط وسريع يناسب الجمهور الشاب.
+          </p>
+          <div class="social-actions">
+            <a href="#" class="btn btn-primary">متابعة الحساب</a>
+            <a href="#videos" class="btn btn-secondary">عرض الفيديوهات</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Analytics -->
+  <section class="section" id="analytics">
+    <div class="container">
+      <div class="section-title">
+        <span>آلية قياس الأداء</span>
+        <h2>مؤشرات أداء تسويقية مقترحة للمنصة</h2>
+        <p>
+          هذا القسم يلبّي معيار التقييم الخاص بقياس الأداء، من خلال عرض 
+          مؤشرات واضحة مع تفسير كيفية الاستفادة منها لتحسين التسويق الرقمي.
+        </p>
+      </div>
+
+      <div class="metrics">
+        <div class="metric">
+          <strong>12K</strong>
+          <span>عدد الزوار</span>
+        </div>
+
+        <div class="metric">
+          <strong>2:35</strong>
+          <span>متوسط مدة التصفح</span>
+        </div>
+
+        <div class="metric">
+          <strong>4.2%</strong>
+          <span>نسبة النقر على الأزرار</span>
+        </div>
+
+        <div class="metric">
+          <strong>8.7%</strong>
+          <span>معدل التحويل</span>
+        </div>
+      </div>
+
+      <div class="analytics-plan">
+        <div class="plan-card">
+          <h3>كيف نستخدم هذه المؤشرات؟</h3>
+          <ul>
+            <li><strong>عدد الزوار:</strong> لقياس حجم الوصول للحملات والمنصة.</li>
+            <li><strong>مدة التصفح:</strong> لمعرفة مدى جاذبية المحتوى وبقاء الزائر داخل المنصة.</li>
+            <li><strong>نسبة النقر:</strong> لقياس فعالية الأزرار والدعوات إلى الإجراء.</li>
+            <li><strong>معدل التحويل:</strong> لتقييم نجاح المنصة في تحويل الزائر إلى عميلة مهتمة أو مشترية.</li>
+          </ul>
+        </div>
+
+        <div class="plan-card">
+          <h3>خطة تحسين التسويق بناءً على التحليلات</h3>
+          <ul>
+            <li>إذا انخفضت مدة التصفح، يتم تطوير المحتوى البصري والفيديوهات.</li>
+            <li>إذا كانت نسبة النقر ضعيفة، يتم تحسين صياغة الأزرار والعروض.</li>
+            <li>إذا كان التحويل منخفضًا، تتم مراجعة رحلة المستخدم من الصفحة الرئيسية حتى الشراء.</li>
+            <li>يمكن مستقبلًا ربط الموقع بأدوات تحليل مثل Google Analytics لقياس الأداء فعليًا.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop CTA -->
+  <section class="section" id="shop">
+    <div class="container">
+      <div class="cta">
+        <div>
+          <h3>ابدئي رحلتك العطرية مع أريج اليوم</h3>
+          <p>استكشفي العطور المناسبة لشخصيتك وشاركي تجربتك عبر المنصات الاجتماعية.</p>
+        </div>
+        <a href="#products" class="btn btn-secondary">تسوقي الآن</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Info -->
+  <footer id="project">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-box">
+          <h3>بيانات المشروع الأكاديمي</h3>
+          <ul>
+            <li><strong>اسم المشروع:</strong> تصميم منصة تسويقية</li>
+            <li><strong>اسم البرنامج:</strong> بكالوريوس الاتصال التسويقي</li>
+            <li><strong>القسم العلمي:</strong> الاتصال التسويقي</li>
+            <li><strong>رمز ورقم المقرر:</strong> MRKC 324</li>
+            <li><strong>اسم المقرر:</strong> التسويق الرقمي</li>
+            <li><strong>الشعبة:</strong> MR2</li>
+            <li><strong>الفصل الدراسي/السنة:</strong> الثاني / 1447هـ</li>
+            <li><strong>أستاذة المقرر:</strong> أ.د/ دعاء فتحي سالم</li>
+          </ul>
+        </div>
+
+        <div class="footer-box">
+          <h3>أعضاء الفريق</h3>
+          <ul>
+            <li>لجين الشمراني — 2407635</li>
+            <li>لمى عابد — 2411927</li>
+            <li>ديانة هشام مطر — 2312851</li>
+            <li>نوال جيزاوي — 2407940</li>
+          </ul>
+
+          <br>
+
+          <h3>ملاحظة أكاديمية</h3>
+          <p>
+            تم إعداد هذه المنصة كتصميم تعليمي لمقرر التسويق الرقمي، مع مراعاة 
+            معايير تجربة المستخدم، المحتوى التسويقي، دمج وسائل التواصل الاجتماعي، 
+            وآلية قياس الأداء.
+          </p>
+        </div>
+      </div>
+
+      <p class="copyright">
+        © 2026 أريج - منصة تسويقية للعطور السعودية | مشروع أكاديمي لمقرر التسويق الرقمي
+      </p>
+    </div>
   </footer>
+
 </body>
-</html>
+    </html>
